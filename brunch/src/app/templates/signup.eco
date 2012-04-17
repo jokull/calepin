@@ -1,0 +1,15 @@
+<h4>Step 1. <strong>Sign up</strong></h4>
+
+<div class="signup">
+  <p>Host your blog on <em>username</em>.calepin.co</p>
+  <div class="field">
+    <label for="f_username">Username</label>
+    <input type="text" name="username" id="f_username" class="small">
+    <input type="submit" value='Sign up'>
+    <div class="availability"></div>
+  </div>
+</div>
+<hr>
+<div class="actions login">
+  Already a Calepin user? <input type="submit" value='Dropbox Login'>
+</div>

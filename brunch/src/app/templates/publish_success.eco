@@ -1,0 +1,2 @@
+<%= if @add then @add else "No" %> new <%= if @add == 1 then "post" else "posts" %><br>
+<%= if @edit then @edit else "No" %> updated <%= if @edit == 1 then "post" else "posts" %>

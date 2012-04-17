@@ -1,0 +1,2 @@
+tar c calepin/static/web | md5 > calepin/deploy
+kraftwerk deploy jl-calepin

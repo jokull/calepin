@@ -1,0 +1,7 @@
+dependencies:
+  - json2.js
+  - modernizr-2.0.6.js
+  - ConsoleDummy.js
+  - jquery-1.7.js
+  - underscore-1.1.7.js
+  - backbone-0.5.3.js

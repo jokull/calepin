@@ -1,0 +1,9 @@
+domain: 
+    - calepin.co
+aliases:
+    - www.calepin.co
+services:
+    - files
+    - postgres
+workers: 4
+wsgi: 'calepin.app:app'

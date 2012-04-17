@@ -1,0 +1,151 @@
+@import "reset"
+@import "skeleton"
+@import "nib/vendor"
+
+body
+  background: #deded4
+  font-size: 11pt
+
+header
+  h1
+    font-size: 40pt
+    a
+      text-decoration: none
+      color: rgba(0,0,0,0)
+      text-shadow: 0 1px 1px rgba(255,255,255,.5)
+      background: rgba(0,0,0,.7)
+      vendor('background-clip', text)
+      transition: background-color 0.5s ease
+    a:hover
+      color: rgba(0,0,0,0)
+      background-color: rgba(0,0,0,1)
+  h3
+
+h1, h2, h3, h4
+  font-family: jubilat, courier, serif
+
+h1, h2, h5
+  font-weight: bold
+
+p
+  font-size: 11pt
+  
+code
+  font-family: courier-new, courier, monospace
+
+pre
+  margin: 13px
+
+.field.checkbox
+  margin-bottom: 10px
+
+.field
+  label
+    margin-bottom: 5px
+    span
+      color: #888
+
+#header
+  padding: 30px 0
+
+#footer
+  padding: 30px 0
+  margin-top: 30px
+  p
+    font-size: 10pt
+    text-align: center
+
+#main
+
+  h4
+    margin-bottom: 22px
+    font-size: 19pt
+
+  .column
+    outline: 3px solid white
+
+  .inner
+    border: 1px solid #e0e0e0
+    background: white
+    padding: 22px
+    height: 360px
+    box-shadow: 0 0 6px 3px rgba(0,0,0,.3)
+    transition: box-shadow 1.1s ease
+  
+  .inner:hover
+    box-shadow: 0 0 12px 3px rgba(0,0,0,0.5)
+    
+  .disabled
+    opacity: .5
+
+  #dropbox
+    input[name=username]
+      width: 169px
+      display: inline
+    .actions.login
+      background: url(../../images/dropbox.png) no-repeat
+      padding-left: 70px
+      input
+        margin: 10px 0
+    .delete
+      position: absolute
+      bottom: 0px
+      font-size: 11px
+      p
+        font-size: 11px
+        color: #888
+      a
+        font-weight: bold
+        color: #888
+      a:hover
+        color: red
+        
+  .availability
+    font-size: 11px
+    font-weight: bold
+    text-align: center
+    
+  #settings
+    .actions
+      padding-top: 10px
+    .field
+      input
+        margin-bottom: 10px
+    .field.available
+      .availability
+        display: none
+    .status
+      font-weight: bold
+      font-size: 11px
+      opacity: 0
+      margin-left: 14px
+      transition: opacity 0.4s ease
+    .status.show
+      opacity: 1
+  
+  #publish
+    .status
+      margin: 30px 0
+      text-align: center
+      font-weight: bold
+      transition: opacity 0.4s ease
+    .visit
+      text-align: center
+      font-size: 12pt
+      opacity: 0
+      transition: opacity 0.4s ease
+      padding: 4px
+      border: 1px solid #e0e0e0
+      border-width: 1px 0
+    .publish
+      font-size: 13pt
+
+section#info
+  margin: 60px 0
+  ul
+    margin-bottom: 30px
+  h3
+    border-bottom: 1px solid rgba(0,0,0,.2)
+
+.screenshot
+  text-align: center

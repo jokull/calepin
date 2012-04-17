@@ -1,0 +1,23 @@
+<h4><strike>Step 1: <strong>Sign up</strong></strike></h4>
+
+<p>Logged in as <strong><%= @username %></strong></p>
+
+<div class="actions">
+  <a href="#" class="button logout">Logout</a>
+</div>
+
+<div class="username-edit">
+  <div class="field">
+    <label for="f_username">Username</label>
+    <input type="text" name="username" id="f_username" class="small">
+    <input type="submit" value="Update"> <span class="status"></span>
+    <div class="availability"></div>
+  </div>
+</div>
+
+<hr>
+
+<div class="delete">
+  <a href="#" class="danger">Delete Calepin Account</a>
+  <p>Your posts are still safe with Dropbox</p>
+</div>

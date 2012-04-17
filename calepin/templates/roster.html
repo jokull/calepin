@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% block title %}Calepin sites{% endblock %}</title>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+</head>
+<body>
+  
+  <div class="container">
+    <div class="row">
+      <div class="span16">
+        <h1>Calepins</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th></th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for blog in blogs if blog.post_count > 1 %}
+            <tr>
+              <td>{{ blog.id }}</td>
+              <td>
+                {% if blog.twitter %}
+                  <a href="http://twitter.com/{{ blog.twitter }}">@{{ blog.twitter }}</a>
+                {% endif %}
+              </td>
+              <td><a href="{{ blog.get_site_url() }}">{{ blog.username }}</a></td>
+              <td>{{ blog.post_count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <hr>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

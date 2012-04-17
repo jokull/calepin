@@ -1,0 +1,25 @@
+<h4>Step 2. <strong>Configure</strong></h4>
+<form action="" methods="POST">
+  <div class="mapping">
+    <div class="field">
+      <label for="f_sitename">Site Title *</label>
+      <input type="text" id="f_sitename" value="<%= @sitename %>" name="sitename">
+    </div>
+    <div class="field">
+      <label for="f_disqus">Disqus Site Name <span>(enables comments)</span></label>
+      <input type="text" id="f_disqus" value="<%= @disqus %>" name="disqus">
+    </div>
+    <div class="field">
+      <label for="f_twitter">Twitter <span>(for an avatar and <em>Follow</em> button)</span></label> 
+      <input type="text" id="f_twitter" value="<%= @twitter %>" name="twitter">
+    </div>
+    <div class="field">
+      <label for="f_cname">CNAME</label>
+      <input type="text" id="f_cname" value="<%= @cname %>" name="cname">
+      <div class="availability"></div>
+    </div>
+  </div>
+  <div class="actions">
+    <input type="submit" value="Save"> <span class="status"></span>
+  </div>
+</form>

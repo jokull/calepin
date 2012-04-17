@@ -1,0 +1,10 @@
+<h4>Step 3. <strong>Publish</strong></h4>
+<p>Every time you hit the publish button we scan for new posts 
+  and publish them on <a href="<%= @site_url %>">
+  <%= if @site_url then @site_url.substr(7) else "your own url" %></a></p>
+<div class="actions">
+  <button class="publish full-width">Publish</button>
+</div>
+<div class="status"></div>
+<div class="visit"><a href="<%= @site_url %>">
+  <%= if @site_url then @site_url.substr(7) %></a> is ready</div>
