@@ -2,31 +2,30 @@
 
 import os
 
-from redis import Redis
+from redis import from_url as Redis
 from dropbox.session import DropboxSession
 from dropbox.rest import ErrorResponse
 
 from flask import (Flask, request, g, url_for, redirect, 
     render_template)
-from flaskext.exceptional import Exceptional
+
+from calepin.config import *
 
 app = Flask(__name__)
-app.config.from_object('calepin.config.%s' % os.environ.get('CALEPIN_CONFIG', 'production'))
+app.config.from_pyfile('config.py')
+app.config.update(DEBUG=os.environ.get('DEBUG') == 'true')
 
+if 'SENTRY_DSN' in os.environ:
+    app.config['SENTRY_DSN'] = os.environ['SENTRY_DSN']    
+    from raven.contrib.flask import Sentry
+    sentry = Sentry(app)
 
-exceptional = Exceptional(app)
-
-
-if not app.debug:
-    from calepin.loggers import configure_logging
-    configure_logging(app)
-    
+redis = Redis(app.config['REDIS_URL'])
 
 @app.before_request
 def connect_services():
-    key, secret = app.config['DROPBOX_API']
-    g.dropbox = DropboxSession(key, secret, 'app_folder')
-    g.redis = Redis(host='localhost', port=6379, db=0)
+    g.dropbox = DropboxSession(app.config['DROPBOX_APP_KEY'], 
+                               app.config['DROPBOX_SECRET'], 'app_folder')
 
 from calepin.models import Blog, db
 db.init_app(app)
@@ -56,5 +55,5 @@ def dropbox_api_error(error):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=6444, debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 6444)), debug=True)
 

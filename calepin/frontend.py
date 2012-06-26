@@ -3,7 +3,7 @@ import os.path
 from flask import (Blueprint, jsonify, g, url_for, request, 
                    session, current_app, render_template,
                    redirect, abort)
-from flaskext.login import (login_required, login_user, 
+from flask_login import (login_required, login_user, 
                             current_user)
 
 from dropbox.rest import ErrorResponse

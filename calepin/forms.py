@@ -3,7 +3,7 @@
 import re, json
 
 from flask import current_app
-from flaskext.login import current_user
+from flask_login import current_user
 
 from fungiform.forms import ValidationError
 from flaskext.fungiform import Form, TextField, BooleanField

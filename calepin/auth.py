@@ -1,7 +1,7 @@
 # encoding=utf-8
 
 from flask import g
-from flaskext.login import LoginManager, AnonymousUser
+from flask_login import LoginManager, AnonymousUser
 from calepin.models import Blog
 
 login_manager = LoginManager()

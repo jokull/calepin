@@ -1,0 +1,17 @@
+import os
+
+SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = SQLALCHEMY_ECHO = False
+
+CALEPIN_ALLOW_EXTENSIONS = (u'.md', u'.json', u'.rst', u'html')
+
+DROPBOX_APP_KEY = os.environ['DROPBOX_APP_KEY']
+DROPBOX_SECRET = os.environ['DROPBOX_SECRET']
+
+REDIS_URL = os.environ['REDIS_URL']
+
+SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']
+
+CALEPIN_ROOT = os.environ['CALEPIN_ROOT']
+CALEPIN_THEME = os.environ['CALEPIN_THEME']
+ADMINS = MANAGERS = [os.environ['CALEPIN_ADMIN']]

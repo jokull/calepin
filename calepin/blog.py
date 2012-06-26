@@ -44,7 +44,7 @@ class Calepin(Pelican):
         self.markup = self.settings['MARKUP']
     
     def build_path(self, *path):
-        root = self._config.ROOT
+        root = self._config.CALEPIN_ROOT
         return os.path.realpath(os.path.join(root, *path))
     
     @property
@@ -59,7 +59,7 @@ class Calepin(Pelican):
     def theme(self):
         if self.blog.theme:
             return self.build_path(u'themes', self.blog.theme)
-        return self._config.DEFAULT_THEME
+        return self._config.CALEPIN_THEME
     
     def get_file_pointer(self, filename, mode='r'):
         if filename.startswith(u'/'):

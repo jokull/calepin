@@ -1,4 +1,4 @@
-from flaskext.sqlalchemy import models_committed
+from flask_sqlalchemy import models_committed
 
 from calepin.app import app
 from calepin.models import Blog

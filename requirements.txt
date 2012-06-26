@@ -1,0 +1,11 @@
+Flask==0.8
+git+https://github.com/mitsuhiko/flask-fungiform.git
+Flask-Login==0.1.3
+Flask-SQLAlchemy==0.16
+Markdown==2.1.1
+blinker==1.2
+bunch==1.0.1
+dropbox==1.4
+git+https://github.com/jokull/pelican.git
+raven
+https://github.com/andymccurdy/redis-py/tarball/2.4.13

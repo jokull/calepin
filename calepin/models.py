@@ -5,8 +5,8 @@ import os, json, shutil, base64
 from sqlalchemy.orm.attributes import get_history
 
 from flask import g, url_for, current_app
-from flaskext.login import current_user
-from flaskext.sqlalchemy import SQLAlchemy
+from flask_login import current_user
+from flask_sqlalchemy import SQLAlchemy
 
 from dropbox.client import DropboxClient
 
