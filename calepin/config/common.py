@@ -1,11 +1,11 @@
 import os
 
 MAIL_SERVER = 'smtp.sendgrid.net'
-MAIL_USERNAME = 'jokull@netfelagid.is'
+MAIL_USERNAME = ''
 MAIL_PASSWORD = ''
 DEFAULT_MAIL_SENDER = ''
 
-ADMINS = MANAGERS = ['jokull@solberg.is']
+ADMINS = MANAGERS = ['admin@calepin.co']
 ASSETS_DEBUG = DEBUG = SQLALCHEMY_ECHO = False
 
 CALEPIN_ALLOW_EXTENSIONS = (u'.md', u'.json', u'.rst', u'html')
