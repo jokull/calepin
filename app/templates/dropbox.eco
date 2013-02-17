@@ -9,7 +9,7 @@
 <div class="username-edit">
   <div class="field">
     <label for="f_username">Username</label>
-    <input type="text" name="username" id="f_username" class="small">
+    <input type="text" name="username" id="f_username" class="small" autocomplete="off">
     <input type="submit" value="Update"> <span class="status"></span>
     <div class="availability"></div>
   </div>

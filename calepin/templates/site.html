@@ -5,34 +5,51 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>{% block title %}{% endblock %}Calepin</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-	
-  <link rel="stylesheet" href="{{ url_for('static', filename="web/css/main.css", v=revision) }}">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename="styles.css", v=revision) }}">
+
+  {%- if debug %}
+  <script>
+    // Enable Brunch HTML/CSS Auto Reload
+    window.brunch = window.brunch || {};
+    window.brunch['auto-reload'] = { enabled: true };
+  </script>
+  {% endif %}
 
   <script>window.server={{ js|tojson|safe if js else {}|tojson|safe }};</script>
-  <script src="{{ url_for('static', filename="web/js/app.js", v=revision) }}"></script>
+  <script src="{{ url_for('static', filename="vendor.js", v=revision) }}"></script>
+  <script src="{{ url_for('static', filename="script.js", v=revision) }}"></script>
   <script>require('index');</script>
-  	
+
   <script type="text/javascript" src="http://use.typekit.com/xwh1sqv.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-  
+
   <link rel="shortcut icon" href="{{ url_for('static', filename="images/calepin-icon-16.png") }}">
 
 </head>
 <body>
-  
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %}
+
   <div id="content">
-    
+
     <header class="container">
       <div id="header" class="sixteen columns">
         <h1><a href="/">Calepin.co</a></h1>
         <h3>Publishing for writers who love Markdown and Dropbox</h3>
       </div>
     </header>
-    
+
     {% block content %}
-    
+
     <div id="main" class="container">
       <div class="one-third column">
         <div class="inner" id="dropbox">
@@ -49,7 +66,7 @@
         </div>
       </div>
     </div>
-    
+
     <section id="info">
       <div class="container">
         <div class="columns four">
@@ -59,115 +76,115 @@
 
 <h3 id="how_does_calepin_work">How Does Calepin Work?</h3>
 
-<p>Calepin reads <a 
-href="http://daringfireball.net/projects/markdown/">Markdown-formatted</a>, 
-plain-text files stored in your <a href="http://dropbox.com/">Dropbox</a> and 
-converts them into blog posts for you. You can publish, edit, re-edit, and 
-delete posts just by editing these files and then re-publishing your blog. 
-Calepin does the work of converting these plain-text files into a useable blog, 
-and even generates an <a 
-href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom feed</a> to allow 
-people to subscribe to your blog in their favourite feed-reader, leaving your 
+<p>Calepin reads <a
+href="http://daringfireball.net/projects/markdown/">Markdown-formatted</a>,
+plain-text files stored in your <a href="http://dropbox.com/">Dropbox</a> and
+converts them into blog posts for you. You can publish, edit, re-edit, and
+delete posts just by editing these files and then re-publishing your blog.
+Calepin does the work of converting these plain-text files into a useable blog,
+and even generates an <a
+href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom feed</a> to allow
+people to subscribe to your blog in their favourite feed-reader, leaving your
 free to concentrate on writing.</p>
 
-<p>By combining <a href="http://dropbox.com/">a service you already have</a> 
-with a <a href="http://daringfireball.net/projects/markdown/">syntax that’s 
-easy to learn</a>, <em>Calepin is the easiest way to self-publish 
+<p>By combining <a href="http://dropbox.com/">a service you already have</a>
+with a <a href="http://daringfireball.net/projects/markdown/">syntax that’s
+easy to learn</a>, <em>Calepin is the easiest way to self-publish
 online</em>.</p>
 
 <h3 id="quick_start">Quick Start</h3>
 
-<p>After logging into Calepin go back to your Dropbox and look for a folder 
-labeled “Apps”. The Calepin folder should already be there with a sample blog 
-post. Make sure all your blog posts are plain text. Use a plain text editor 
-like Byword or Notepad. All files in <code>~/Dropbox/Apps/Calepin</code> should 
+<p>After logging into Calepin go back to your Dropbox and look for a folder
+labeled “Apps”. The Calepin folder should already be there with a sample blog
+post. Make sure all your blog posts are plain text. Use a plain text editor
+like Byword or Notepad. All files in <code>~/Dropbox/Apps/Calepin</code> should
 carry the <code>.md</code> or <code>.rst</code> filename extension.</p>
 
-<p>All blog posts must carry a <strong>date</strong> and a 
-<strong>title</strong>. This is metadata needed by the generator to order and 
-label your posts meaningfully. Format your posts like the screenshot at the 
-bottom of the page, otherwise they may not be picked up by Calepin and won’t be 
-published published on your blog. More details on how to format your posts are 
-in the <a href="http://jokull.calepin.co/calepin-guide.html">Calepin 
+<p>All blog posts must carry a <strong>date</strong> and a
+<strong>title</strong>. This is metadata needed by the generator to order and
+label your posts meaningfully. Format your posts like the screenshot at the
+bottom of the page, otherwise they may not be picked up by Calepin and won’t be
+published published on your blog. More details on how to format your posts are
+in the <a href="http://jokull.calepin.co/calepin-guide.html">Calepin
 Guide</a>.</p>
 
-<p>When you hit the “Publish” button Calepin picks up edits, removals and new 
+<p>When you hit the “Publish” button Calepin picks up edits, removals and new
 posts and updates your Calepin URL to reflect your newest work.</p>
 
 <h3 id="why_use_calepin">Why Use Calepin?</h3>
 
 <h4 id="because_its_uncomplicated">Because It’s Uncomplicated</h4>
 
-<p>All you need is <a href="https://www.dropbox.com/">a Dropbox account</a> and 
-<a href="http://bywordapp.com/markdown/guide.html">some knowledge of 
+<p>All you need is <a href="https://www.dropbox.com/">a Dropbox account</a> and
+<a href="http://bywordapp.com/markdown/guide.html">some knowledge of
 Markdown</a>. That’s it.</p>
 
-<h4 id="because_markdown_is_easy_and_elegant">Because Markdown Is Easy and 
+<h4 id="because_markdown_is_easy_and_elegant">Because Markdown Is Easy and
 Elegant</h4>
 
-<p>Markdown “allows you to write using an easy-to-read, easy-to-write plain 
-text format, then convert it to structurally valid HTML”. You don’t need to 
-learn complex HTML tags, and the syntax isn’t heavy or distracting; you can 
-easily add headlines, subheads, emphasis, links, and footnotes without ended up 
+<p>Markdown “allows you to write using an easy-to-read, easy-to-write plain
+text format, then convert it to structurally valid HTML”. You don’t need to
+learn complex HTML tags, and the syntax isn’t heavy or distracting; you can
+easily add headlines, subheads, emphasis, links, and footnotes without ended up
 with a complex, hard-to-read mishmash of tags.</p>
 
-<p>Due to its simplicity and ease-of-reading, Markdown is the ideal syntax for 
-writing essays, long-form journalism, and short stories: none of the complexity 
-of Microsoft Word, but all of the features you’ve come to rely on for serious 
+<p>Due to its simplicity and ease-of-reading, Markdown is the ideal syntax for
+writing essays, long-form journalism, and short stories: none of the complexity
+of Microsoft Word, but all of the features you’ve come to rely on for serious
 writing.</p>
 
 
-<h4 id="because_dropbox_is_always_with_you">Because Dropbox Is Always With 
+<h4 id="because_dropbox_is_always_with_you">Because Dropbox Is Always With
 You</h4>
 
-<p>Dropbox takes care of syncing your writing to all your devices together so 
-you can write and edit posts anywhere. It’s on your desktop, your laptop, and 
-your smartphone, and you don’t need to worry: write a draft on your iPhone and 
+<p>Dropbox takes care of syncing your writing to all your devices together so
+you can write and edit posts anywhere. It’s on your desktop, your laptop, and
+your smartphone, and you don’t need to worry: write a draft on your iPhone and
 it’s waiting for to put the finishing touches on you on your Mac.</p>
 
-<h4 id="because_calepin_does_all_the_hard_work_for_you">Because Calepin Does 
+<h4 id="because_calepin_does_all_the_hard_work_for_you">Because Calepin Does
 All the Hard Work for You</h4>
 
-<p>With Calepin, you don’t have any of the complexity normally involved with 
-static site generators. No awkward CLI commands to try and remember, no updates 
-or patches to apply, no server management, no fiddling with RSS feeds. Calepin 
-does this all for you, leaving you to concentrate on the most important part: 
+<p>With Calepin, you don’t have any of the complexity normally involved with
+static site generators. No awkward CLI commands to try and remember, no updates
+or patches to apply, no server management, no fiddling with RSS feeds. Calepin
+does this all for you, leaving you to concentrate on the most important part:
 the writing.</p>
 
 <h4 id="because_youre_not_locked_in">Because You’re Not Locked In</h4>
 
-<p>Find something that works better for you? No problem. Your <code>.md</code> 
-files are small and portable, and aren’t locked away inside a proprietary 
-format or hidden away inside an arcane XML file. They’re right there in a 
-folder you own and control, ready to be used somewhere else if you need 
+<p>Find something that works better for you? No problem. Your <code>.md</code>
+files are small and portable, and aren’t locked away inside a proprietary
+format or hidden away inside an arcane XML file. They’re right there in a
+folder you own and control, ready to be used somewhere else if you need
 them.</p>
 
 <h4 id="because_you_own_your_writing">Because You Own Your Writing</h4>
 
-<p>Some other blog services claim copyright or unlimited, permanent reuse 
+<p>Some other blog services claim copyright or unlimited, permanent reuse
 rights on everything you post on them.</p>
 
 <p>Calepin doesn’t. Not now, not ever.</p>
 
-<p>You retain copyright to <em>everything</em> you post with Calepin, and 
-always will. We won’t reuse it, sell it, or try to take your rights away from 
-you. And if we want to use anything you’ve created in our publicity materials, 
+<p>You retain copyright to <em>everything</em> you post with Calepin, and
+always will. We won’t reuse it, sell it, or try to take your rights away from
+you. And if we want to use anything you’ve created in our publicity materials,
 we’ll ask your permission <em>before</em> we do it.</p>
 
 <h3 id="faq">FAQ</h3>
 
 <h4 id="themes">Themes</h4>
 
-<p>Calepin currently has no plans for custom themes. Think of it like 
-submitting a short story to a newspaper: the writer’s identity isn’t portrayed 
+<p>Calepin currently has no plans for custom themes. Think of it like
+submitting a short story to a newspaper: the writer’s identity isn’t portrayed
 through a look and feel — it’s portrayed through their words.</p>
 
 <h4 id="posts_not_showing_up">Posts Not Showing Up?</h4>
 
-<p>Calepin is picky on posts it processes. Every post <em>must</em> have “Date” 
-and “Title” in the metadata, formatted correctly. Calepin also skips 
-<em>ANYTHING</em> that is not UTF-8 encoded. So make sure your editor handles 
-saving and editing UTF-8 files. Most Mac OS X and iOS editors do this by 
+<p>Calepin is picky on posts it processes. Every post <em>must</em> have “Date”
+and “Title” in the metadata, formatted correctly. Calepin also skips
+<em>ANYTHING</em> that is not UTF-8 encoded. So make sure your editor handles
+saving and editing UTF-8 files. Most Mac OS X and iOS editors do this by
 default. Windows users may need to dig into the editor settings.</p>
 
 <h4 id="custom_domains">Custom Domains</h4>
@@ -179,18 +196,18 @@ default. Windows users may need to dig into the editor settings.</p>
 <p>Many users are rightfully concerned about the longevity of their published
 work. The only way to guarantee it is by making Calepin make sense in the long
 term to the app creator. In the future, expect Calepin to become a paid service
-with a free trial or limited account. Right now the service is 100% free. There 
+with a free trial or limited account. Right now the service is 100% free. There
 is no concrete time plan for the paid version. </p>
 
-<h4 id="what_does_a_calepin_site_look_like">What Does a Calepin Site Look 
+<h4 id="what_does_a_calepin_site_look_like">What Does a Calepin Site Look
 Like?</h4>
 
-<p><a href="http://koralatov.calepin.co/tumblrs-future/">This post</a> by 
-Calepin user Koralatov is a good example of the sort of post you can write 
-using Markdown and Calepin. You can also compare it to its <a 
+<p><a href="http://koralatov.calepin.co/tumblrs-future/">This post</a> by
+Calepin user Koralatov is a good example of the sort of post you can write
+using Markdown and Calepin. You can also compare it to its <a
 href="http://koralatov.calepin.co/tumblrs-future.txt">Markdown source</a>.</p>
 
-<h4 id="what_editors_are_recommended_for_markdown">What Editors Are Recommended 
+<h4 id="what_editors_are_recommended_for_markdown">What Editors Are Recommended
 for Markdown?</h4>
 
 <p>There’s a lively and growing ecosystem of apps and online tools built with
@@ -200,20 +217,20 @@ desktop editors; <a href="http://www.secondgearsoftware.com/elements/">Elements
 for iPad and iPhone</a> uses Dropbox for storing all its files, and makes a good
 option for writing on iOS devices. </p>
 
-<p>There are lots of other options, though, so follow <a 
-href="http://twitter.com/calepinapp/">@calepinapp on Twitter</a> for tips on 
-writing in Markdown. We always welcome suggestions on which tools to use for 
+<p>There are lots of other options, though, so follow <a
+href="http://twitter.com/calepinapp/">@calepinapp on Twitter</a> for tips on
+writing in Markdown. We always welcome suggestions on which tools to use for
 writing Markdown.</p>
 
 <h3 id="calepin_guide">Calepin Guide</h3>
 
-<p>For more settings and tips read <a 
+<p>For more settings and tips read <a
 href="http://jokull.calepin.co/calepin-guide.html">the Calepin Guide</a>.</p>
 
 <h3 id="testimonials">Testimonials</h3>
 
 <ul>
-	<li>Jon Mitchell at ReadWriteWeb has written <a 
+  <li>Jon Mitchell at ReadWriteWeb has written <a
 href="http://www.readwriteweb.com/archives/how_to_use_calepin_the_easiest_blog_tool_in_the_wo.php">
   a nice introduction to Calepin</a>.</li>
 </ul>
@@ -223,7 +240,7 @@ href="http://www.readwriteweb.com/archives/how_to_use_calepin_the_easiest_blog_t
         </div>
       </div>
     </section>
-    
+
     <section class="screenshots">
       <div class="container">
         <div class="screenshot sixteen columns">
@@ -231,16 +248,16 @@ href="http://www.readwriteweb.com/archives/how_to_use_calepin_the_easiest_blog_t
         </div>
       </div>
     <section>
-      
+
     {% endblock %}
-    
+
     <footer class="clearfix container">
       <div class="columns sixteen">
         <div id="footer">
           <p>
             <span>Calepin is a hosted blog that watches your Markdown files stored in Dropbox</span>
             <br>
-            Email 
+            Email
               <span class="email"><a href="mailto:support@calepin.co">support@calepin.co</a></span> ·
             Twitter
               <span class="twitter"><a href="http://twitter.com/calepinapp">@calepinapp</a></span>
@@ -249,9 +266,9 @@ href="http://www.readwriteweb.com/archives/how_to_use_calepin_the_easiest_blog_t
         </div>
       </div>
     </footer>
-    
+
   </div>
-  
+
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -261,7 +278,7 @@ href="http://www.readwriteweb.com/archives/how_to_use_calepin_the_easiest_blog_t
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
-  
+
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -275,6 +292,6 @@ href="http://www.readwriteweb.com/archives/how_to_use_calepin_the_easiest_blog_t
     })();
 
   </script>
-  
+
 </body>
 </html>

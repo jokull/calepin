@@ -1,2 +1,4 @@
-calepin/static/web
+public
+node_modules
 .env
+venv

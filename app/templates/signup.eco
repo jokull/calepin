@@ -4,7 +4,7 @@
   <p>Host your blog on <em>username</em>.calepin.co</p>
   <div class="field">
     <label for="f_username">Username</label>
-    <input type="text" name="username" id="f_username" class="small">
+    <input type="text" name="username" id="f_username" class="small" autocomplete="off">
     <input type="submit" value='Sign up'>
     <div class="availability"></div>
   </div>
